@@ -1,4 +1,11 @@
 # There is also a JSON file with the same datatypes for easier visualisation
+# What is needed to be filled in:
+#        1) The Search Base
+#        2) The Realm name
+#        3) The friendly name for the IPA Domain
+#        4) The friendly name for the current IPA replica (hostnamectl --pretty)
+#        5) The KDCs and KADMs (hostname and IP)
+#        6) The LDAP Replicas (hostname and IP)
 #
 # Append the BASE DN of the IPA Server to the following entries:
 #    * macosODConfig."Record Type Map"."Native Map"."Search Base"
@@ -38,6 +45,9 @@
 # 
 # All this information is cached on the client computer and is checked
 #  again for updates at every new OD session.
+#
+# The formatting is very heavy for readability. Please keep it this way
+# specifically in this file.
 
 macosODConfig = {
     'Attribute Type Map' : [ {'Native Map':['cn'],              'Standard Name':'dsAttrTypeStandard=RecordName'},
