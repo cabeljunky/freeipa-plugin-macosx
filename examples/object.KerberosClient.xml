@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>edu.mit.kerberos</key>
+	<dict>
+		<key>domain_realm</key>
+		<dict>
+			<key>.example.org</key>
+			<string>EXAMPLE.ORG</string>
+			<key>example.org</key>
+			<string>EXAMPLE.ORG</string>
+		</dict>
+		<key>libdefaults</key>
+		<dict>
+			<key>default_realm</key>
+			<string>EXAMPLE.ORG</string>
+		</dict>
+		<key>realms</key>
+		<dict>
+			<key>EXAMPLE.ORG</key>
+			<dict>
+				<key>KADM_List</key>
+				<array>
+					<string>ipa.example.org</string>
+					<string>172.16.23.138</string>				</array>
+				<key>KDC_List</key>
+				<array>
+					<string>ipa.example.org</string>
+					<string>172.16.23.138</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
+	<key>generationID</key>
+	<integer>1458175896</integer>
+</dict>
+</plist>

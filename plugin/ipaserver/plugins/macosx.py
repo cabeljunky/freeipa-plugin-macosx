@@ -5,7 +5,7 @@
 
 import re
 
-from ipalib import api, errors
+from ipalib import api, errors, Command
 from ipalib import Str, StrEnum, Bool, Bytes, Int
 from ipalib.plugable import Registry
 from .baseldap import (
@@ -60,6 +60,7 @@ PLUGIN_CONFIG = (
     ('container_macosx', DN(('ou', 'macosxodconfig'), ('cn', 'opendirectory'), ('cn', 'etc'))),
 )
 
+
 @register()
 class macosx(LDAPObject):
     """
@@ -68,11 +69,11 @@ class macosx(LDAPObject):
     container_dn = None
     object_name = _('Mac OS X client profile')
     object_name_plural = _('Mac OS X client profiles')
-    object_class = ['organisationalUnit', 'apple-configuration']
+    object_class = ['organizationalUnit', 'apple-configuration']
     permission_filter_objectclasses = ['apple-configuration']
     default_attributes = [
         'ou',
-        'description', 
+        'description',
     ]
     search_display_attributes = [
         'ou', 'description',
@@ -95,12 +96,12 @@ class macosx(LDAPObject):
 
     takes_params = (
         Bytes('description',
-            cli_name='data',
-            label=_('JSON data for profile'),
-            flags = ['no_display', 'no_create', 'no_search', 'no_update'],
-        ),
+              cli_name='data',
+              label=_('JSON data for profile'),
+              flags=['no_display', 'no_create', 'no_search', 'no_update'],
+              ),
     )
-    
+
     # Inject constants into the api.env before it is locked down
     def _on_finalize(self):
         self.env._merge(**dict(PLUGIN_CONFIG))
@@ -110,12 +111,12 @@ class macosx(LDAPObject):
     def get_dn(self, *keys, **kwargs):
         return DN(self.container_dn, api.env.basedn)
 
+
 @register()
 class macosx_enable(Command):
     __doc__ = _('Create a new Desktop Profile.')
 
     msg_summary = _('Added Desktop Profile "%(value)s"')
-
 
 
 @register()
@@ -125,7 +126,6 @@ class macosx_disable(Command):
     msg_summary = _('Deleted Desktop Profile "%(value)s"')
 
 
-
 @register()
 class macosx_import(LDAPUpdate):
     __doc__ = _('Import a Mac OS X Client Profile.')
@@ -133,9 +133,6 @@ class macosx_import(LDAPUpdate):
     msg_summary = _('Imported Mac OS X Client Profile"%(value)s"')
 
 
-
 @register()
 class macosx_show(LDAPRetrieve):
     __doc__ = _('Display the properties of Mac OS X Client Profile.')
-
-

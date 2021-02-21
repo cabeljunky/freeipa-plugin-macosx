@@ -1,0 +1,10 @@
+[kdc]
+database = {
+	EXAMPLE.ORG = {
+		realm = EXAMPLE.ORG
+		acl_file = /var/db/krb5kdc/acl_file.EXAMPLE.ORG
+		mkey_file = /var/db/krb5kdc/m_key.EXAMPLE.ORG
+		dbname = od:/LDAPv3/ldapi://%2Fvar%2Frun%2Fldapi
+		log_file = /var/log/krb5kdc/log.EXAMPLE.ORG
+	}
+}

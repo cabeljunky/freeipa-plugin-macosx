@@ -11,6 +11,15 @@ It is accomplished by publishing a MacOS X OD Config entry in the cn=opendirecto
 4. A schema extension for the needed apple properties (/plugin.d/schema/60-macosx.ldif)
 5. A COS Plugin configuration for autogeneration of the authAuthority entries of the existing accounts
 ## What's implemented?
-Nothing significant yet.
-## How fast can we get it up and running?
-Minimal implementation in a few weeks. I'm learning Python with this, so any assistance will be apreciated. Drop me a line if you're feeling at home in python.
+ - The IPA script that will take the json object and convert it to the ldap config
+ - The IPA script that shows the content
+ - A UI that acn show th content or change the content
+
+## How to get it working now,
+In the examples directory there are xml files that maps the data.
+The ldif file there is an example config. The content is base64 encode in the ldif and represents the xml files
+The plugin folder need to be copyed to the ipa python plugin folder
+The schema.d needs to be copy to the ipa server folder 
+The updates folder needs to go to the  ipa server update folder.
+
+You can have a look in the freeipa-plugin-macosx.spec file for the locations.

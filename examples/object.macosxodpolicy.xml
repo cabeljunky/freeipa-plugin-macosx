@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Denied SASL Methods</key>
+	<array>
+		<string>DIGEST-MD5</string>
+		<string>CRAM-MD5</string>
+	</array>
+	<key>Configured Security Level</key>
+	<dict>
+		<key>Advisory Client Caching</key>
+		<false/>
+		<key>Binding Required</key>
+		<true/>
+		<key>Man In The Middle</key>
+		<true/>
+		<key>No ClearText Authentications</key>
+		<true/>
+		<key>Packet Encryption</key>
+		<true/>
+		<key>Packet Signing</key>
+		<true/>
+	</dict>
+	<key>Directory Binding</key>
+	<true/>
+</dict>
+</plist>
