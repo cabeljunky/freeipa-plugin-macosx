@@ -23,3 +23,20 @@ The schema.d needs to be copy to the ipa server folder
 The updates folder needs to go to the  ipa server update folder.
 
 You can have a look in the freeipa-plugin-macosx.spec file for the locations.
+
+## links:
+
+https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
+https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
+https://listman.redhat.com/archives/freeipa-users/2016-February/msg00070.html
+https://support.apple.com/lv-lv/guide/directory-utility/diruc0621ca1/6.0/mac/11.0
+
+
+### schema
+
+Apple OpenLDAP 2.4.28
+
+https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2//OpenLDAP/servers/slapd/schema/apple_auxillary.schema.auto.html
+https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2//OpenLDAP/servers/slapd/schema/apple.schema
+
+https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2//OpenLDAP/servers/slapd/schema/microsoft.schema
