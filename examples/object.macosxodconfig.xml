@@ -150,6 +150,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>apple-user-picture</string>
+						<string>photo</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:Picture</string>
@@ -222,6 +223,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>acctFlags</string>
+						<string>sambaAcctFlags</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBAccountFlags</string>
@@ -230,6 +232,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>pwdLastSet</string>
+						<string>sambaPwdLastSet</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBPasswordLastSet</string>
@@ -238,6 +241,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>logonTime</string>
+						<string>sambaLogonTime</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBLogonTime</string>
@@ -246,6 +250,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>logoffTime</string>
+						<string>sambaLogoffTime</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBLogoffTime</string>
@@ -254,6 +259,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>kickoffTime</string>
+						<string>sambaKickoffTime</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBKickoffTime</string>
@@ -262,6 +268,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>homeDrive</string>
+						<string>sambaHomeDrive</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBHomeDrive</string>
@@ -270,6 +277,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>scriptPath</string>
+						<string>sambaLogonScript</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBScriptPath</string>
@@ -278,6 +286,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>profilePath</string>
+						<string>sambaProfilePath</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBProfilePath</string>
@@ -286,6 +295,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>userWorkstations</string>
+						<string>sambaUserWorkstations</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBUserWorkstations</string>
@@ -294,6 +304,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>smbHome</string>
+						<string>sambaHomePath</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBHome</string>
@@ -310,6 +321,7 @@
 					<key>Native Map</key>
 					<array>
 						<string>primaryGroupID</string>
+						<string>sambaPrimaryGroupSID</string>
 					</array>
 					<key>Standard Name</key>
 					<string>dsAttrTypeStandard:SMBGroupRID</string>
@@ -677,9 +689,10 @@
 						<string>posixAccount</string>
 						<string>ipaObject</string>
 						<string>person</string>
+						<string>apple-user</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=users,cn=accounts,dc=red-home,dc=nl</string>
+					<string>cn=users,cn=accounts,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -810,9 +823,10 @@
 					<array>
 						<string>posixGroup</string>
 						<string>ipaUserGroup</string>
+						<string>apple-group</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=groups,cn=accounts,dc=red-home,dc=nl</string>
+					<string>cn=groups,cn=accounts,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -872,7 +886,7 @@
 						<string>pkiCA</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=CAcert,cn=ipa,cn=etc,dc=red-home,dc=nl</string>
+					<string>cn=CAcert,cn=ipa,cn=etc,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -1054,17 +1068,22 @@
 			<array>
 				<dict>
 					<key>Group Object Classes</key>
-					<string>OR</string>
+					<string>AND</string>
 					<key>Object Classes</key>
 					<array>
 						<string>ipaHost</string>
+						<string>ipaObject</string>
 						<string>krbPrincipal</string>
 						<string>krbPrincipalAux</string>
-						<string>apple-user</string>
+						<string>apple-computer</string>
 						<string>ieee802Device</string>
+						<string>ipaObject</string>
+						<string>nsHost</string>
+						<string>pkiuser</string>
+						<string>ipaService</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=computers,cn=accounts,dc=red-home,dc=nl</string>
+					<string>cn=computers,cn=accounts,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -1254,7 +1273,7 @@
 						<string>ieee802Device</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=computers,cn=accounts,dc=red-home,dc=nl</string>
+					<string>cn=computers,cn=accounts,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -1346,7 +1365,7 @@
 						<string>ipaHostGroup</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=hostgroups,cn=accounts,dc=red-home,dc=nl</string>
+					<string>cn=hostgroups,cn=accounts,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -1472,7 +1491,7 @@
 						<string>organizationalUnit</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=config,dc=red-home,dc=nl</string>
+					<string>cn=config,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -1508,7 +1527,7 @@
 						<string>automountMap</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=automount,dc=red-home,dc=nl</string>
+					<string>cn=automount,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -1552,7 +1571,7 @@
 						<string>automount</string>
 					</array>
 					<key>Search Base</key>
-					<string>cn=automount,dc=red-home,dc=nl</string>
+					<string>cn=automount,dc=example,dc=com</string>
 				</dict>
 			</array>
 			<key>Standard Name</key>
@@ -1563,13 +1582,14 @@
 	<array>
 		<string>DIGEST-MD5</string>
 		<string>CRAM-MD5</string>
+		<string>PBKDF2-SHA256</string>
 	</array>
 	<key>Delay Rebind Try in seconds</key>
 	<integer>0</integer>
 	<key>Enable Use</key>
 	<true/>
 	<key>Map Search Base</key>
-	<string>cn=config,dc=red-home,dc=nl</string>
+	<string>cn=config,dc=example,dc=com</string>
 	<key>OpenClose Timeout in seconds</key>
 	<integer>15</integer>
 	<key>Port Number</key>
@@ -1579,13 +1599,13 @@
 	<key>Search Timeout in seconds</key>
 	<integer>120</integer>
 	<key>Server</key>
-	<string>core-smurf.server.dronten.red-home.nl</string>
+	<string>172.16.23.138</string>
 	<key>Server Mappings</key>
 	<true/>
 	<key>Template Name</key>
 	<string>FreeIPA Server</string>
 	<key>Template Search Base Suffix</key>
-	<string>dc=red-home,dc=nl</string>
+	<string>dc=example,dc=com</string>
 	<key>Template Version</key>
 	<string>1.0</string>
 	<key>UI Name</key>

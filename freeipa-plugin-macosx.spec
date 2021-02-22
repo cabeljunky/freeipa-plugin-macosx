@@ -6,8 +6,8 @@ Release:        1%{?dist}
 Summary:        Support macOS systems in FreeIPA
 
 License:        GPL
-URL:            https://github.com/cabeljunky/freeipa-plugin-macosx
-Source0:        freeipa-plugin-macosx-%{version}.tar.gz
+URL:            https://github.com/cabeljunky/freeipa-plugin-macos
+Source0:        freeipa-plugin-macos-%{version}.tar.gz
 
 BuildRequires:  python3-devel
 Requires:       freeipa-server-common >= 4.8.7
@@ -33,8 +33,10 @@ rm -rf $RPM_BUILD_ROOT
 
 #%__cp plugin/ipaclient/plugins/macosx.py %buildroot/%{python3_sitelib}/ipaclient/plugins
 %__cp plugin/ipaserver/plugins/macosx.py %buildroot/%{python3_sitelib}/ipaserver/plugins
-%__cp plugin/schema.d/60-macosx.ldif %buildroot/%_datadir/ipa/schema.d 
-%__cp plugin/updates/60-macosx.update %buildroot/%_datadir/ipa/updates 
+%__cp plugin/schema.d/60-apple.ldif %buildroot/%_datadir/ipa/schema.d
+%__cp plugin/schema.d/60-apple-auxillary.ldif %buildroot/%_datadir/ipa/schema.d
+%__cp plugin/schema.d/60-apple-ipa.ldif %buildroot/%_datadir/ipa/schema.d
+%__cp plugin/updates/60-macos.update %buildroot/%_datadir/ipa/updates
 #%__cp plugin/ui/macosx.js %buildroot/%_datadir/ipa/ui/js/plugins/macosx
 
 %posttrans

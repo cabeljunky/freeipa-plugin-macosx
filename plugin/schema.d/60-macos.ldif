@@ -1,0 +1,135 @@
+
+dn: cn=schema
+changetype: modify
+add: attributeTypes
+##samba
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.1 NAME 'lmPassword' DESC 'LanManager Passwd' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.2 NAME 'ntPassword' DESC 'NT Passwd' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+# Account flags in string format ([UWDX     ])
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.4 NAME 'acctFlags' DESC 'Account Flags' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+## Password timestamps & policies
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.3 NAME 'pwdLastSet' DESC 'NT pwdLastSet' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.5 NAME 'logonTime' DESC 'NT logonTime' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.6 NAME 'logoffTime' DESC 'NT logoffTime' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.7 NAME 'kickoffTime' DESC 'NT kickoffTime' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.8 NAME 'pwdCanChange' DESC 'NT pwdCanChange' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+# string settings
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.10 NAME 'homeDrive' DESC 'NT homeDrive' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.11 NAME 'scriptPath' DESC 'NT scriptPath' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.12 NAME 'profilePath' DESC 'NT profilePath' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.13 NAME 'userWorkstations' DESC 'userWorkstations' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.17 NAME 'smbHome' DESC 'smbHome' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.18 NAME 'domain' DESC 'Windows NT domain to which the user belongs' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+# user and group RID
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.14 NAME 'rid' DESC 'NT rid' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.15 NAME 'primaryGroupID' DESC 'NT Group RID' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.20 NAME 'sambaSID' DESC 'Security ID' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{64} SINGLE-VALUE )
+# Primary group SID, compatible with ntSid
+attributeTypes: ( 1.3.6.1.4.1.7165.2.1.23 NAME 'sambaPrimaryGroupSID' DESC 'Primary Group Security ID'  EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{64} SINGLE-VALUE )
+##apple_auxillary
+attributeTypes: ( 1.2.840.113556.1.4.867 NAME 'altSecurityIdentities' EQUALITY caseExactMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.2.840.113556.1.4.771 NAME 'servicePrincipalName' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+##apple
+# Time to live
+attributeTypes: ( 1.3.6.1.4.1.250.1.60 NAME 'ttl' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+# Authentication authority attribute 1.3.6.1.4.1.63.1000.1.1.2.16.1
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.2.16.2 NAME ( 'authAuthority' 'authAuthority2' ) DESC 'password server authentication authority' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+# User attributes 1.3.6.1.4.1.63.1000.1.1.1.1
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.6 NAME 'apple-user-homeurl' DESC 'home directory URL' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.7 NAME 'apple-user-class' DESC 'user class' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.8 NAME 'apple-user-homequota' DESC 'home directory quota' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.9 NAME 'apple-user-mailattribute' DESC 'mail attribute' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.10 NAME 'apple-mcxflags' DESC 'mcx flags' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.16 NAME ( 'apple-mcxsettings' 'apple-mcxsettings2' ) DESC 'mcx settings' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.12 NAME 'apple-user-picture' DESC 'picture' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.13 NAME 'apple-user-printattribute' DESC 'print attribute' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.14 NAME 'apple-user-adminlimits' DESC 'admin limits' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.15 NAME 'apple-user-authenticationhint' DESC 'password hint' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.17 NAME 'apple-user-homesoftquota' DESC 'home directory soft quota' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.18 NAME 'apple-user-passwordpolicy' DESC 'password policy options' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.19 NAME ( 'apple-keyword' ) DESC 'keywords' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.20 NAME ( 'apple-generateduid' ) DESC 'generated unique ID' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.21 NAME ( 'apple-imhandle' ) DESC 'IM handle (service:account name)' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.22 NAME ( 'apple-webloguri' ) DESC 'Weblog URI' EQUALITY caseIgnoreMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE)
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.23 NAME ( 'apple-mapcoordinates' ) DESC 'Map Coordinates' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.24 NAME ( 'apple-postaladdresses' ) DESC 'Postal Addresses' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.25 NAME ( 'apple-phonecontacts' ) DESC 'Phone Contacts' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.26 NAME ( 'apple-emailcontacts' ) DESC 'EMail Contacts' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.27 NAME ( 'apple-birthday' ) DESC 'Birthday' EQUALITY generalizedTimeMatch SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.28 NAME ( 'apple-relationships' ) DESC 'Relationships' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.29 NAME ( 'apple-company' ) DESC 'company' EQUALITY caseIgnoreMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.30 NAME ( 'apple-nickname' ) DESC 'nickname' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.31 NAME ( 'apple-mapuri' ) DESC 'Map URI' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.32 NAME ( 'apple-mapguid' ) DESC 'map GUID' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.33 NAME ( 'apple-serviceslocator' ) DESC 'Calendar Principal URI' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.34 NAME 'apple-organizationinfo' DESC 'Originization Info data' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15  )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.35 NAME ( 'apple-namesuffix' ) DESC 'namesuffix' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.36 NAME ( 'apple-primarycomputerlist' ) DESC 'primary computer list' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.37 NAME 'apple-user-passwordpolicy-effective' DESC 'password effective policy options' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.38 NAME ( 'apple-profiles' ) DESC 'profile settings' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.39 NAME ( 'apple-profiles-timestamp' ) DESC 'profile timestamp settings' EQUALITY generalizedTimeMatch ORDERING generalizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.40 NAME 'apple-accountpolicy' DESC 'account policy options' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.41 NAME 'lastFailedLoginTime' EQUALITY generalizedTimeMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.42 NAME 'apple-authenticationAllowed' DESC 'account policy APAuthenticationAllowed proxy' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.43 NAME 'apple-passwordChangeAllowed' DESC 'account policy APPasswordChangeAllowed proxy' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.44 NAME 'apple-willPasswordExpire' DESC 'account policy APWillPasswordExpire proxy' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.45 NAME 'apple-willAuthenticationsExpire' DESC 'account policy APWillAuthenticationsExpire proxy' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.46 NAME 'apple-secondsUntilPasswordExpires' DESC 'account policy APSecondsUntilPasswordExpiration proxy' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.1.47 NAME 'apple-secondsUntilAuthenticationsExpire' DESC 'account policy APSecondsUntilAuthenticationExpiration proxy' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+# XML plist attribute 1.3.6.1.4.1.63.1000.1.1.1.17.1
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.17.1 NAME 'apple-xmlplist' DESC 'XML plist data' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+# Configuration attributes 1.3.6.1.4.1.63.1000.1.1.1.12
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.1 NAME 'apple-password-server-location' DESC 'password server location' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.2 NAME 'apple-data-stamp' DESC 'data stamp' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.3 NAME 'apple-config-realname' DESC 'config real name' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.4 NAME 'apple-password-server-list' DESC 'password server replication plist' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.5 NAME 'apple-ldap-replica' DESC 'LDAP replication list' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.6 NAME 'apple-ldap-writable-replica' DESC 'LDAP writable replication list' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.7 NAME 'apple-kdc-authkey' DESC 'KDC master key RSA encrypted with realm public key' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.8 NAME 'apple-kdc-configdata' DESC 'Contents of the kdc.conf file' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.12.9 NAME 'apple-last-serverid' DESC 'Last serverID used' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.1.1.1.104 NAME 'apple-enabled-auth-mech' DESC 'Enabled auth mechs' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: (1.3.6.1.1.1.1.105 NAME 'apple-disabled-auth-mech' DESC 'Disabled auth mechs' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+# Group attributes 1.3.6.1.4.1.63.1000.1.1.1.14
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.1 NAME 'apple-group-homeurl' DESC 'group home url' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.2 NAME 'apple-group-homeowner' DESC 'group home owner settings' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.5 NAME 'apple-group-realname' DESC 'group real name' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.6 NAME 'apple-group-nestedgroup' DESC 'group real name' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.7 NAME 'apple-group-memberguid' DESC 'group real name' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.8 NAME 'apple-group-services' DESC 'group services' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.9 NAME ( 'apple-contactguid' ) DESC 'contact GUID' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.10 NAME ( 'apple-ownerguid' ) DESC 'owner GUID' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.11 NAME ( 'apple-primarycomputerguid' ) DESC 'primary computer GUID' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.12 NAME 'apple-group-expandednestedgroup' DESC 'expanded nested group list' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.13 NAME 'apple-selfwrite' DESC 'selfwrite flag' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.14 NAME 'apple-locale-relay' DESC 'designated locale relay server for replication' EQUALITY caseExactMatch  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.14.15 NAME 'apple-locale-subnets' DESC 'subnets associated with a locale' EQUALITY caseExactMatch  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+# Computer attributes 1.3.6.1.4.1.63.1000.1.1.1.10
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.10.2 NAME 'apple-realname' DESC 'real name' EQUALITY caseIgnoreMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.10.3 NAME 'apple-networkview' DESC 'Network view for the computer' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.10.4 NAME 'apple-category' DESC 'Category for the computer or neighborhood' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.10.5 NAME 'apple-srv' DESC 'List of services to advertize via srv records' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.10.6 NAME 'apple-primary-locale' DESC 'primary locale for replication' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.10.7 NAME 'apple-parentlocales' DESC 'parent locale' EQUALITY caseExactMatch  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.10.8 NAME 'apple-networkinterfaces' DESC 'list of available network interfaces' EQUALITY caseExactMatch  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+# Computer list attributes 1.3.6.1.4.1.63.1000.1.1.1.11
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.11.3 NAME 'apple-computers' DESC 'computers' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: (  1.3.6.1.4.1.63.1000.1.1.1.11.4  NAME 'apple-computer-list-groups'  DESC 'groups'  EQUALITY caseExactMatch  SUBSTR caseExactSubstringsMatch  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+# XML plist attribute 1.3.6.1.4.1.63.1000.1.1.1.17.1
+attributeTypes: (  1.3.6.1.4.1.63.1000.1.1.1.17.1  NAME 'apple-xmlplist'  DESC 'XML plist data'  EQUALITY caseExactMatch  SUBSTR caseExactSubstringsMatch  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+# Service URL attributes 1.3.6.1.4.1.63.1000.1.1.1.19.2
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.19.2 NAME 'apple-service-url' DESC 'URL of service' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+# Service Info attributes 1.3.6.1.4.1.63.1000.1.1.1.19.6
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.19.6 NAME 'apple-serviceinfo' DESC 'service related information' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.19.7 NAME 'apple-hwuuid' DESC 'Hardware uuid of computer' EQUALITY caseExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+attributeTypes: ( 1.3.6.1.4.1.63.1000.1.1.1.19.8 NAME 'apple-ldap-serverid' DESC 'ID used by LDAP' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+-
+add: objectClasses
+##samba
+objectClasses: ( 1.3.6.1.4.1.7165.2.2.3 NAME 'sambaAccount' SUP top AUXILIARY DESC 'Samba Auxilary Account' MUST ( uid $ rid ) MAY  ( cn $ lmPassword $ ntPassword $ pwdLastSet $ logonTime $ logoffTime $ kickoffTime $ pwdCanChange $ pwdMustChange $ acctFlags $ displayName $ smbHome $ homeDrive $ scriptPath $ profilePath $ description $ userWorkstations $ primaryGroupID $ domain ))
+##apple
+objectClasses: ( 1.3.6.1.4.1.250.3.18 NAME 'cacheObject' AUXILIARY SUP top DESC 'Auxiliary object class to hold TTL caching information' MAY ( ttl ) )
+objectClasses: ( 1.3.6.1.4.1.63.1000.1.1.2.1 NAME 'apple-user' SUP top AUXILIARY DESC 'apple user account' MAY ( apple-user-homeurl $ apple-user-class $ apple-user-homequota $ apple-user-mailattribute $ apple-user-printattribute $ apple-mcxflags $ apple-mcxsettings $ apple-user-adminlimits $ apple-user-picture $ apple-user-authenticationhint $ apple-user-homesoftquota $ apple-user-passwordpolicy $ apple-accountpolicy $ apple-keyword $ apple-generateduid $ apple-imhandle $ apple-webloguri $ authAuthority $ acctFlags $ pwdLastSet $ logonTime $ logoffTime $ kickoffTime $ homeDrive $ scriptPath $ profilePath $ userWorkstations $ smbHome $ rid $  primaryGroupID $ sambaSID $ sambaPrimaryGroupSID $  userCertificate $ userPKCS12 $ jpegPhoto $ apple-nickname $ apple-namesuffix $ apple-birthday $ apple-relationships $ apple-organizationinfo $ apple-phonecontacts $ apple-emailcontacts $ apple-postaladdresses $ apple-mapcoordinates $ apple-mapuri $ apple-mapguid $ apple-serviceslocator $ altSecurityIdentities ) )
+objectClasses: ( 1.3.6.1.4.1.63.1000.1.1.2.12 NAME 'apple-configuration' DESC 'configuration' SUP top STRUCTURAL MAY ( cn $ apple-config-realname $ apple-data-stamp $ apple-password-server-location $ apple-password-server-list $ apple-ldap-replica $ apple-ldap-writable-replica $ apple-keyword $ apple-kdc-authkey $ apple-kdc-configdata $ apple-xmlplist $ ttl $ apple-last-serverid $ apple-enabled-auth-mech $ apple-accountpolicy ) )
+objectClasses: ( 1.3.6.1.4.1.63.1000.1.1.2.14 NAME 'apple-group' SUP top AUXILIARY DESC 'group account' MAY ( apple-group-homeurl $ apple-group-homeowner $ apple-mcxflags $ apple-mcxsettings $ apple-group-realname $ apple-user-picture $ apple-keyword $ apple-generateduid $ apple-group-nestedgroup $ apple-group-memberguid $ mail $ rid $ sambaSID $ ttl $ jpegPhoto $ apple-group-services $ apple-contactguid $ apple-ownerguid $ labeledURI $ apple-locale-relay $ apple-locale-subnets $ apple-serviceslocator ) )
+objectClasses: ( 1.3.6.1.4.1.63.1000.1.1.2.10 NAME 'apple-computer' DESC 'computer' SUP top STRUCTURAL MUST ( cn ) MAY ( apple-realname $ description $ macAddress $ apple-category $ apple-computer-list-groups $ apple-keyword $ apple-mcxflags $ apple-mcxsettings $ apple-networkview $ apple-xmlplist $ apple-service-url $ apple-serviceinfo $ apple-serviceslocator $ apple-primarycomputerlist $ apple-ldap-serverid $ authAuthority $ uidNumber $ gidNumber $ apple-generateduid $ ttl $ acctFlags $ pwdLastSet $ logonTime $ logoffTime $ kickoffTime $ rid $ primaryGroupID $ sambaSID $ sambaPrimaryGroupSID $ owner $ apple-ownerguid $ apple-contactguid $ ipHostNumber $ bootFile $ apple-hwuuid $ apple-srv $ apple-primary-locale $ apple-parentlocales $ apple-networkinterfaces $ userCertificate $ userPKCS12) )

@@ -6,6 +6,7 @@
 	<array>
 		<string>DIGEST-MD5</string>
 		<string>CRAM-MD5</string>
+		<string>PBKDF2-SHA256</string>
 	</array>
 	<key>Configured Security Level</key>
 	<dict>

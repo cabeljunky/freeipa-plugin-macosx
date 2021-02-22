@@ -24,6 +24,32 @@ The updates folder needs to go to the  ipa server update folder.
 
 You can have a look in the freeipa-plugin-macosx.spec file for the locations.
 
+
+Add to all the users object:
+```ldif
+objectClass: apple-user
+```
+Add the following attributes to the users:
+```ldif
+altSecurityIdentities: Kerberos:admin@EXAMPLE.ORG
+authAuthority: Kerberosv5;;diradmin@EXAMPLE.ORG;EXAMPLE.ORG;
+```
+
+Add to all the users groups:
+```ldif
+objectClass: apple-group
+```
+
+
+Add to all the computers:
+```ldif
+objectClass: apple-computer
+cn: test-mac.example.com
+cn: test-mac.example.com$
+authAuthority: ;Kerberosv5;;test-mac.example.com$@EXAMPLE.ORG;EXAMPLE.ORG;
+fqdn: test-mac.example.com$
+krbPrincipalName: test-mac.example.com$
+```
 ## links:
 
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
@@ -36,7 +62,7 @@ https://support.apple.com/lv-lv/guide/directory-utility/diruc0621ca1/6.0/mac/11.
 
 Apple OpenLDAP 2.4.28
 
-https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2//OpenLDAP/servers/slapd/schema/apple_auxillary.schema.auto.html
-https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2//OpenLDAP/servers/slapd/schema/apple.schema
+https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2/OpenLDAP/servers/slapd/schema/apple_auxillary.schema.auto.html
+https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2/OpenLDAP/servers/slapd/schema/apple.schema
 
-https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2//OpenLDAP/servers/slapd/schema/microsoft.schema
+https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2/OpenLDAP/servers/slapd/schema/microsoft.schema
