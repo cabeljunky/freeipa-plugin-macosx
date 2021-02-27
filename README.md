@@ -60,6 +60,15 @@ So on [this article](https://serverfault.com/a/922177) describes the way to disa
 You can also disable it on the Freeipa side [describe here](https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html/configuration_command_and_file_reference/core_server_configuration_reference#nsslapd-allowed-sasl-mechanisms
 )
 
+Original allowed sasl mecanisms
+```bash
+dsconf -D "cn=Directory Manager" ldap://ipa.example.com config replace nsslapd-allowed-sasl-mechanisms="ANONYMOUS, EXTERNAL, LOGIN, PLAIN, GSSAPI, GSS-SPNEGO, DIGEST-MD5, CRAM-MD5"
+```
+To disable the CRAM-MD5 and DIGEST-MD5
+```bash
+dsconf -D "cn=Directory Manager" ldap://ipa.example.com config replace nsslapd-allowed-sasl-mechanisms="ANONYMOUS, EXTERNAL, LOGIN, PLAIN, GSSAPI, GSS-SPNEGO"
+```
+
 But for me that didn't work properly.
 The only way that I got this working wit MacOS 10.14, 10.15 and 11.0 was to use it like this:
 
@@ -87,6 +96,20 @@ https://support.apple.com/en-us/HT203998
 
 https://apple.stackexchange.com/questions/379080/hide-a-user-account-from-the-login-screen-of-macos-catalina
 
+```bash
+sudo /System/Library/CoreServices/ManagedClient.app/Contents/Resources/createmobileaccount -P -n [username]
+```
+
+# Build RPM
+```bash
+sudo dnf -y install rpm-build rpmdevtools
+rpmdev-setuptree
+git clone https://github.com/abbra/freeipa-user-trust-attributes.git
+cd freeipa-user-trust-attributes
+git archive --prefix freeipa-user-trust-attributes-plugin-0.0.1/ -o freeipa-user-trust-attributes-plugin-0.0.1.tar.gz HEAD
+rpmbuild -ta freeipa-user-trust-attributes-plugin-0.0.1.tar.gz
+```
+The packages will be in ~/rpmbuild/RPMS/noarch/
 
 # Links:
 
@@ -94,7 +117,7 @@ https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00070.html
 https://support.apple.com/lv-lv/guide/directory-utility/diruc0621ca1/6.0/mac/11.0
-
+https://annvix.com/Using_Kerberos_5_for_Single_Sign-On_Authentication
 
 ### schema
 
@@ -111,3 +134,9 @@ https://www.freeipa.org/page/HowTo/Setup_FreeIPA_Services_for_Mac_OS_X_10.12
 https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html/configuration_command_and_file_reference/core_server_configuration_reference#nsslapd-allowed-sasl-mechanisms
 https://serverfault.com/a/922177
 https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html-single/administration_guide/index
+
+### MDM
+http://docs.macsysadmin.se/2017/pdf/Day2Session5.pdf
+https://developer.apple.com/business/documentation/MDM-Protocol-Reference.pdf
+https://github.com/micromdm/micromdm
+https://github.com/ProfileCreator/ProfileCreator
