@@ -87,6 +87,9 @@ https://support.apple.com/en-us/HT203998
 
 https://apple.stackexchange.com/questions/379080/hide-a-user-account-from-the-login-screen-of-macos-catalina
 
+```bash
+sudo /System/Library/CoreServices/ManagedClient.app/Contents/Resources/createmobileaccount -P -n [username]
+```
 
 # Links:
 
@@ -94,7 +97,7 @@ https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00070.html
 https://support.apple.com/lv-lv/guide/directory-utility/diruc0621ca1/6.0/mac/11.0
-
+https://annvix.com/Using_Kerberos_5_for_Single_Sign-On_Authentication
 
 ### schema
 
@@ -111,3 +114,9 @@ https://www.freeipa.org/page/HowTo/Setup_FreeIPA_Services_for_Mac_OS_X_10.12
 https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html/configuration_command_and_file_reference/core_server_configuration_reference#nsslapd-allowed-sasl-mechanisms
 https://serverfault.com/a/922177
 https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html-single/administration_guide/index
+
+### MDM
+http://docs.macsysadmin.se/2017/pdf/Day2Session5.pdf
+https://developer.apple.com/business/documentation/MDM-Protocol-Reference.pdf
+https://github.com/micromdm/micromdm
+https://github.com/ProfileCreator/ProfileCreator
