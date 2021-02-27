@@ -50,7 +50,45 @@ authAuthority: ;Kerberosv5;;test-mac.example.com$@EXAMPLE.ORG;EXAMPLE.ORG;
 fqdn: test-mac.example.com$
 krbPrincipalName: test-mac.example.com$
 ```
-## links:
+
+
+#To authenticate wit FreeIPA
+The mac machnins will try to use "CRAM-MD5"
+This will not work with the freeipa server.
+
+So on [this article](https://serverfault.com/a/922177) describes the way to disable this on the mac machine when you have set up the connection
+You can also disable it on the Freeipa side [describe here](https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html/configuration_command_and_file_reference/core_server_configuration_reference#nsslapd-allowed-sasl-mechanisms
+)
+
+But for me that didn't work properly.
+The only way that I got this working wit MacOS 10.14, 10.15 and 11.0 was to use it like this:
+
+Create a keytab file for the machine.
+
+Generate keytab on IPA server
+```bash
+ipa-getkeytab -s yourserver.yourdomain.com -p host/workstation.yourdomain.com -k ~/workstation.keytab
+```
+Retrieve keytab from server
+```bash
+scp user@yourserver.yourdomain.com:/home/user/workstation.keytab /etc/krb5.keytab
+chown root:wheel /etc/krb5.keytab
+chmod 0600 /etc/krb5.keytab
+```
+Now connect the machine to the FreeIPA server. Use the "Directory Utility" 
+Then
+```bash
+rm /etc/krb5.keytab
+```
+
+
+#Hide the admin user
+https://support.apple.com/en-us/HT203998
+
+https://apple.stackexchange.com/questions/379080/hide-a-user-account-from-the-login-screen-of-macos-catalina
+
+
+# Links:
 
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
@@ -66,3 +104,10 @@ https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2/OpenLDAP/servers/
 https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2/OpenLDAP/servers/slapd/schema/apple.schema
 
 https://opensource.apple.com/source/OpenLDAP/OpenLDAP-530.80.2/OpenLDAP/servers/slapd/schema/microsoft.schema
+https://www.freeipa.org/page/HowTo/Setup_FreeIPA_Services_for_Mac_OS_X_10.12
+
+###FreeIPA info
+
+https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html/configuration_command_and_file_reference/core_server_configuration_reference#nsslapd-allowed-sasl-mechanisms
+https://serverfault.com/a/922177
+https://access.redhat.com/documentation/en-us/red_hat_directory_server/11/html-single/administration_guide/index
