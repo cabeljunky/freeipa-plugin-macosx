@@ -11,7 +11,8 @@ jobs:
       id: rpm
       uses: naveenrajm7/rpmbuild@master
       with:
-        spec_file: "cello.spec"
+        spec_file: "freeipa-plugin-macosx.spec"
+        use_sources_from_repo: true
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
