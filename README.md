@@ -117,7 +117,7 @@ https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00059.html
 https://listman.redhat.com/archives/freeipa-users/2016-February/msg00070.html
 https://support.apple.com/lv-lv/guide/directory-utility/diruc0621ca1/6.0/mac/11.0
-https://annvix.com/Using_Kerberos_5_for_Single_Sign-On_Authentication
+
 
 ### schema
 
