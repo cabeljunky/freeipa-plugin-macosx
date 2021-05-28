@@ -9,9 +9,9 @@ jobs:
 
     - name: build RPM package
       id: rpm
-      uses: cabeljunky/freeipa-plugin-macosx/@master
+      uses: naveenrajm7/rpmbuild@master
       with:
-        spec_file: "freeipa-plugin-macosx.spec"
+        spec_file: "cello.spec"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
